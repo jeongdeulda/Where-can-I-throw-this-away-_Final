@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>이거 어디다가 버려요?</title>
+
+	<style type="text/css">
+
+		/*폰트*/
+			@font-face {
+		    font-family: 'Pretendard-ExtraBold';
+		    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff') format('woff');
+		    font-weight: 800;
+		    font-style: normal;}
+			@font-face {
+		    font-family: 'Pretendard-Bold';
+		    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+		    font-weight: 700;
+		    font-style: normal;} 
+			@font-face {
+		    font-family: 'Pretendard-SemiBold';
+		    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
+		    font-weight: 600;
+		    font-style: normal;}
+			@font-face {
+		    font-family: 'Pretendard-Regular';
+		    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+		    font-weight: 400;
+		    font-style: normal;}
+		    @font-face {
+		    font-family: 'Pretendard-Light';
+		    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff') format('woff');
+		    font-weight: 300;
+		    font-style: normal;}
+
+		html{font-family: Pretendard-Regular; font-style: 'normal;'; fo word-break: keep-all; display: block; background: white; scroll-behavior: smooth; font-size: 16px; scroll-behavior: smooth;}
+		body{overflow-x: hidden; display: block;}
+		body,h1,h2,h3,h4,h5,p,ul,ol,header,block{margin: 0; padding: 0;}
+    /* 기본 글자 크기 */
+    body {font-size: 16px;}
+
+    /* 네비게이션 스타일 */
+    nav { overflow-x: auto; padding: 30px 0px; background: black;}
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        background-color: black;}
+
+    nav ul li {
+        margin: 0;
+      	flex: 0 0 auto;}
+
+    nav ul li a {
+    		font-size: 1rem;
+        color: #8DE747;
+        text-decoration: none;
+        padding: 10px 20px;
+     		white-space: nowrap;}
+
+    h1 {font-size: 13rem; word-break: keep-all; text-align: center; font-family: Pretendard-ExtraBold;
+    	margin-top: 0px; margin-bottom: 0px; background-image: url('Title/Title.png'); background-attachment: scroll;
+            background-size: 1000px;}
+
+
+/* 네모 칸 스타일 */
+    .container {
+        display: flex;}
+
+    .box1 {
+        flex: 1; 
+        background: #8DE747;
+        padding: 5px;
+        border: 1px solid black;
+        text-align: center;
+        font-family: Pretendard-Bold;
+        font-size: 1.6rem;
+        margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 10px;
+        border-left: none;}
+    .box2 {
+        flex: 1; 
+        background: #8DE747;
+        padding: 5px;
+        border: 1px solid black;
+        text-align: center;
+        font-family: Pretendard-Bold;
+        font-size: 1.6rem;
+        margin-left: 20px; margin-top: 0px; margin-bottom: 0px; margin-right: 20px;}
+    .box3 {
+        flex: 1; 
+        background: #8DE747;
+        padding: 5px;
+        border: 1px solid black;
+        text-align: center;
+        font-family: Pretendard-Bold;
+        font-size: 1.6rem;
+        margin-left: 30px; margin-top: 0px; margin-bottom: 0px; margin-right: 30px;}
+    .box4 {
+        flex: 1; 
+        background: #8DE747;
+        padding: 5px;
+        border: 1px solid black;
+        text-align: center;
+        font-family: Pretendard-Bold;
+        font-size: 1.6rem;
+        margin-left: 10px; margin-top: 0px; margin-bottom: 0px; margin-right: 0px;
+        border-right: none;}
+
+
+/* 본문 section 스타일 */
+        section {display: flex; 
+            	}
+        .S1 {height: 700px;}
+        .S2 {height: 1300px;}
+        .S3 {height: 1450px;}
+        .S4 {height: 1300px;}
+        .S5 {height: 1800px;}
+
+        .left {flex: 1.3;
+            	background-color: white; flex-direction: column;}
+
+        .right {flex: 1;
+            		background-color: #8DE747;}
+
+        .top {
+            flex: 1;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            font-family: Pretendard-Bold;
+            font-size: 5.5rem;
+            padding: 5px 5px;}
+
+        .bottom {
+            flex: 1;
+            background-color: white;
+            color: black;
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
+            align-items: left;
+            font-family: Pretendard-SemiBold;
+            font-size: 5.5rem;}
+
+/*팝업 창*/
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding-left : 80px; padding-right : 80px; padding-top: 90px; padding-bottom: 85px;
+            border: 2px solid black;
+            z-index: 9999; width: 100%; max-width: 1400px;
+ 						/* 배경 이미지 */
+            background-size: cover;}
+        .popup-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; margin-left: 760px;}
+        .popup-content div {
+            margin-bottom: 15px;
+            font-size: 1.2rem;}
+        .popup-content .title {
+            font-family: Pretendard-SemiBold; 
+            font-size: 2.7rem; color: white;}
+        .popup-content .title2 {
+            font-family: Pretendard-SemiBold; 
+            font-size: 2.7rem; color: white; margin-left:150px;}
+        .popup-content .title3 {
+            font-family: Pretendard-SemiBold; 
+            font-size: 2.7rem; color: white; margin-left:70px;}
+        .popup-content .title4 {
+            font-family: Pretendard-SemiBold; 
+            font-size: 2.7rem; color: white; margin-left:10px;}
+        .popup-content .title5 {
+            font-family: Pretendard-SemiBold; 
+            font-size: 2.7rem; color: white; margin-left:-220px;}
+        .popup-content .title6 {
+            font-family: Pretendard-SemiBold; 
+            font-size: 2.7rem; color: white; margin-left:-130px;}
+
+        .popup-content .small {
+            font-family: Pretendard-Light;
+            font-size: 1.2rem; color: white; line-height: 1.8rem;}
+        .popup-content .small2 {
+            font-family: Pretendard-Light;
+            font-size: 1.2rem; color: white; line-height: 1.8rem; margin-left:120px;}
+        .popup-content .small3 {
+            font-family: Pretendard-Light;
+            font-size: 1.2rem; color: white; line-height: 1.8rem; margin-left:160px;}
+        .popup-content .small4 {
+            font-family: Pretendard-Light;
+            font-size: 1.2rem; color: white; line-height: 1.8rem; margin-left:-20px;}
+        .popup-content .small5 {
+            font-family: Pretendard-Light;
+            font-size: 1.2rem; color: white; line-height: 1.8rem; margin-left:30px;}
+        .popup-content .small6 {
+            font-family: Pretendard-Light;
+            font-size: 1.2rem; color: white; line-height: 1.8rem; margin-left:-110px;}
+        .popup-content .small7 {
+            font-family: Pretendard-Light;
+            font-size: 1.2rem; color: white; line-height: 1.8rem; margin-left:-40px;}
+
+
+        .Green {color: #8DE747;}
+        .Bold {font-family: Pretendard-Bold;}
+
+/*팝업 버튼*/
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+          	margin-right: 5px;
+         		font-family: Pretendard-Light;}
+
+        .break-text{display: none;}
+        .break-text2{display: inline;}
+/*팝업 밖 이미지*/
+        .resizable-image {max-width: 100%; height: 70px;}
+        .resizable-image2 {max-width: 100%; height: 80px; position: relative;
+    		top: 5px;}
+    		.resizable-image3 {max-width: 100%; height: 150px; position: absolute;
+    		top: 1450px; left: 820px;}
+    		.resizable-image4 {max-width: 100%; height: 85px; top: 12px; margin-left: 2px; margin-right: 2px; position: relative;}
+    		.resizable-image5 {max-width: 100%; height: 120px; position: absolute; margin-left: 2px; top: 1680px; left: 880px;}
+    		.resizable-image6 {max-width: 100%; height: 85px; top: 15px; margin-left: 2px; margin-right: 2px; position: relative;}
+    		.resizable-image6-2 {max-width: 100%; height: 130px; position: absolute; top: 1800px; left: 740px;}
+    		.resizable-image7 {max-width: 100%; height: 180px; position: absolute; margin-left: 2px; top: 1835px; left: 900px;}
+
+    		.resizable-image-B1{max-width: 100%; height: 300px; position: absolute; top: 4100px; left: 80px;}
+    		.resizable-image-B2{max-width: 100%; height: 300px; position: absolute; top: 4100px; left: 400px;}
+    		.resizable-image-B3{max-width: 100%; height: 300px; position: absolute; top: 4120px; left: 650px;}
+    		.resizable-image-B4{max-width: 100%; height: 300px; position: absolute; top: 4450px; left: 180px;}
+    		.resizable-image-B5{max-width: 100%; height: 270px; position: absolute; top: 4480px; left: 400px;}
+    		.resizable-image-B6{max-width: 100%; height: 300px; position: absolute; top: 4450px; left: 710px;}
+
+    		.resizable-image-R1{max-width: 100%; height: 400px; position: absolute; top: 5460px; left: 50px;}
+    		.resizable-image-R2{max-width: 100%; height: 210px; position: absolute; top: 5470px; left: 300px;}
+    		.resizable-image-R3{max-width: 100%; height: 200px; position: absolute; top: 5490px; left: 850px;}
+    		.resizable-image-R4{max-width: 100%; height: 250px; position: absolute; top: 5670px; left: 300px;}
+    		.resizable-image-R5{max-width: 100%; height: 270px; position: absolute; top: 5700px; left: 750px;}
+    		.resizable-image-R6{max-width: 100%; height: 340px; position: absolute; top: 5840px; left: 200px;}
+    		.resizable-image-R7{max-width: 100%; height: 230px; position: absolute; top: 5900px; left: 320px;}
+
+
+    		.image-wrapper {display: inline-block; position: relative;}
+    		.copy_P{margin-top:1600px; margin-left: 20px;}
+    		.copy{color: white; margin-left: 20px; margin-top: 10px;}
+    		.go{color: white; margin-left: 20px; margin-top: 10px; font-size: 2rem; border: 1px solid white; padding: 10px; display: inline-block;}
+
+    		.copy_P2{margin-top:none; margin-left: none;}
+    		.copy2{color: white; margin-left: none; margin-top: none;}
+    		.go2{color: none; margin-left: none; margin-top: none; font-size: none; border: none; padding: none; display: none;}
+    		.All{padding-top: none; background: none;}
+
+    		
+
+
+
+
+
+
+/* 700px 이하일 때 아이템 크기 및 높이 조정 */
+    @media (max-width: 700px) {
+        nav ul {
+        		justify-content: flex-start;
+           }
+        nav ul li {
+            margin: 5px 0;}
+        h1 { margin-top: 0px; margin-bottom: 0px;
+        		font-size: 7rem; text-align: left; line-height: 7rem;}
+        .container {
+            flex-direction: column;}
+        .box1 {
+		        flex: 1; 
+		        background: #8DE747;
+		        padding: 5px;
+		        border: 1px solid black;
+		        text-align: left;
+		        font-family: Pretendard-Bold;
+		        font-size: 1.2rem;
+		        margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 80px;
+		        border-left: none;}
+		    .box2 {
+		        flex: 1; 
+		        background: #8DE747;
+		        padding: 5px;
+		        border: 1px solid black;
+		        text-align: left;
+		        font-size: 1.2rem;
+		        margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 140px;
+		      	border-left: none; border-bottom: none; border-top: none;}
+		    .box3 {
+		        flex: 1; 
+		        background: #8DE747;
+		        padding: 5px;
+		        border: 1px solid black;
+		        text-align: left;
+		        font-size: 1.2rem;
+		        margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 105px;
+		      	border-left: none;}
+        .box4 {
+		        flex: 1; 
+		        background: #8DE747;
+		        padding: 5px;
+		        border: 1px solid black;
+		        text-align: left;
+		        font-size: 1.2rem;
+		        margin-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-right: 110px;
+		      	border-left: none; border-top: none;}
+        .top {
+            flex: 1;
+            background-color: black;
+            color: white; 
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            font-family: Pretendard-Bold;
+            font-size: 4rem;
+            padding: 5px 5px;}
+        .bottom {
+            flex: 1;
+            background-color: #8DE747;
+            color: black; 
+            display: flex;
+            justify-content: center;
+            align-items: left;
+            font-family: Pretendard-SemiBold;
+            font-size: 2.5rem;}
+        .right{display: none;}
+        .left{background-color: #8DE747;}
+        .break-text{display: block;}
+        .S1{height: 200px;}
+        .S2{height: 800px;}
+        .S3{height: 830px;}
+        .S4{height: 750px;}
+        
+/* 팝업 */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding-left : 10px; padding-right : 10px; padding-top: 20px; padding-bottom: 20px;
+            border: 2px solid black;
+            z-index: 9999; width: 100%; max-width: 330px; height: 100%; max-height: 450px;
+ 						/* 배경 이미지 */
+            background-size: cover;}
+        .popup-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; margin-left: 10px; margin-right: 10px;}
+        .popup-content div {
+            margin-bottom: 15px;
+            font-size: 1rem;}
+        .popup-content .title {
+            font-family: Pretendard-SemiBold; 
+            font-size: 2rem; color: white; margin-top: 40px;}
+        .popup-content .title2 {
+            font-family: Pretendard-SemiBold; 
+            font-size: 2rem; color: white; margin-top: 40px; margin-left: 0px;}
+        .popup-content .title3 {
+            font-family: Pretendard-SemiBold; 
+            font-size: 2rem; color: white; margin-left:0px; margin-top: 40px;}
+        .popup-content .title4 {
+            font-family: Pretendard-SemiBold; 
+            font-size: 2rem; color: white; margin-left:0px; margin-top: 40px;}
+        .popup-content .title5 {
+            font-family: Pretendard-SemiBold; 
+            font-size: 2rem; color: white; margin-left:0px; margin-top: 40px;}
+        .popup-content .title6 {
+            font-family: Pretendard-SemiBold; 
+            font-size: 2rem; color: white; margin-left:0px; margin-top: 40px;}
+
+        .popup-content .small {
+            font-family: Pretendard-Light;
+            font-size: 1rem; color: white; line-height: 1.8rem;}
+        .popup-content .small2 {
+            font-family: Pretendard-Light;
+            font-size: 1rem; color: white; line-height: 1.8rem; margin-left: 0px;}
+        .popup-content .small3 {
+            font-family: Pretendard-Light;
+            font-size: 1rem; color: white; line-height: 1.8rem; margin-left:0px;}
+        .popup-content .small4 {
+            font-family: Pretendard-Light;
+            font-size: 1rem; color: white; line-height: 1.8rem; margin-left:0px;}
+        .popup-content .small5 {
+            font-family: Pretendard-Light;
+            font-size: 1rem; color: white; line-height: 1.8rem; margin-left:0px;}
+        .popup-content .small6 {
+            font-family: Pretendard-Light;
+            font-size: 1rem; color: white; line-height: 1.8rem; margin-left:0px;}
+        .popup-content .small7 {
+            font-family: Pretendard-Light;
+            font-size: 1rem; color: white; line-height: 1.8rem; margin-left:0px;}
+
+        .Green {color: #8DE747;}
+        .Bold {font-family: Pretendard-Bold;}
+
+/* 닫기 버튼 위치 조정 */
+    		.close-btn {
+        right: 5px;}
+
+/* 팝업 내용 줄바꿈 */
+        .break-text{display: inline;}
+        .break-text2{display: none;}
+        .line-break-text {white-space: pre-line;}
+
+/* 팝업 밖 이미지 */
+    		.resizable-image {max-width: 100%; height: 30px;}
+				.resizable-image2 {max-width: 100%; height: 40px; position: relative;
+    		top: 5px; left: 0px; margin-left: 2px;}
+    		.resizable-image3 {max-width: 100%; height: 70px; position: absolute;
+    		top: 1175px; left: 185px;}
+    		.resizable-image4 {max-width: 100%; height: 40px; position: relative;
+    		top: 5px; left: 0px; margin-left: 3px; margin-right: 3px;}
+    		.resizable-image5 {max-width: 100%; height: 50px; position: absolute;
+    		top: 1350px; left: 105px;}
+    		.resizable-image6 {max-width: 100%; height: 40px; top: 5px; margin-left: 2px; margin-right: 2px; position: relative;}
+    		.resizable-image6-2 {max-width: 100%; height: 50px; position: absolute; top: 1400px; left: 340px;}
+    		.resizable-image7 {max-width: 100%; height: 60px; position: absolute; margin-left: 2px; top: 1482px; left: 190px;}
+
+    		.resizable-image-B1{max-width: 100%; height: 150px; position: absolute; top: 2720px; left: 10px;}
+    		.resizable-image-B2{max-width: 100%; height: 150px; position: absolute; top: 2720px; left: 130px;}
+    		.resizable-image-B3{max-width: 100%; height: 130px; position: absolute; top: 2745px; left: 245px;}
+    		.resizable-image-B4{max-width: 100%; height: 140px; position: absolute; top: 2890px; left: 30px;}
+    		.resizable-image-B5{max-width: 100%; height: 140px; position: absolute; top: 2890px; left: 130px;}
+    		.resizable-image-B6{max-width: 100%; height: 140px; position: absolute; top: 2890px; left: 280px;}
+
+    		.resizable-image-R1{max-width: 100%; height: 180px; position: absolute; top: 3560px; left: 10px;}
+    		.resizable-image-R2{max-width: 100%; height: 85px; position: absolute; top: 3570px; left: 130px;}
+    		.resizable-image-R3{max-width: 100%; height: 80px; position: absolute; top: 3690px; left: 325px;}
+    		.resizable-image-R4{max-width: 100%; height: 105px; position: absolute; top: 3690px; left: 130px;}
+    		.resizable-image-R5{max-width: 100%; height: 115px; position: absolute; top: 3800px; left: 290px;}
+    		.resizable-image-R6{max-width: 100%; height: 145px; position: absolute; top: 3750px; left: 40px;}
+    		.resizable-image-R7{max-width: 100%; height: 90px; position: absolute; top: 3830px; left: 90px;}
+
+
+
+
+
+
+    		.copy_P2{margin-top:900px; margin-left: 20px;}
+    		.copy2{color: white; margin-left: 20px; margin-top: 10px;}
+    		.go2{color: white; margin-left: 20px; margin-top: 10px; font-size: 1rem; border: 1px solid white; padding: 10px; display: inline-block;}
+    		.All{padding-top: 0px; background: #8DE747;}
+
+
+
+
+    }
+</style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#tag1">분리하기</a></li>
+            <li><a href="#tag2">종량제봉투</a></li>
+            <li><a href="#tag3">수거함</a></li>
+            <li><a href="#tag4">대형폐기물</a></li>
+            <li><a href="#tag5">전체보기</a></li>
+        </ul>
+    </nav>
+    <h1 class="T">이거 어디다가 버려요?</h1>
+		    <div class="container">
+		    <div class="box1">쓰레기마다 다양한 분리수거 방법이 있어요</div>
+		    <div class="box2">분리수거 할 때마다 버벅대는 당신!</div>
+		    <div class="box3">분리수거 할 때마다 검색창을 켜는 당신!</div>
+		    <div class="box4">그런 당신을 위해 한꺼번에 모았습니다</div>
+		</div>
+<section class="S1">
+		<div class="white"></div>
+</section>
+    <section id="tag1" class="S2">
+        <div class="left">
+            <div class="top">이걸<br>분리해서 <br class="break-text">버려야 한다고?</div>
+            <div class="bottom">
+                <p onclick="openPopup(1, 0)">콘센트<img src="Title/T-1.png" alt="Image description" class="resizable-image">멀티탭</p>
+                <p onclick="openPopup(1, 1)">유통기한 지난 알약<img src="Title/T-2.png" alt="Image description" class="resizable-image2"></p>
+                <p onclick="openPopup(1, 2)">여러 재질이<br class="break-text"> 합쳐진 우산<img src="Title/T-3.png" alt="Image description" class="resizable-image3"></p>
+                <p onclick="openPopup(1, 3)">공책 종이와<img src="Title/T-4.png" alt="Image description" class="resizable-image4">스프링 철</p>
+                <p onclick="openPopup(1, 4)">뽁뽁이로 만들어진<br class="break-text">비닐팩<img src="Title/T-5.png" alt="Image description" class="resizable-image5"></p>
+                <p onclick="openPopup(1, 5)">종이박스와<img src="Title/T-6.png" alt="Image description" class="resizable-image6">테이프<img src="Title/T-6-2.png" alt="Image description" class="resizable-image6-2"></p>
+                <p onclick="openPopup(1, 6)">음식물이 묻은 <br class="break-text">재활용 용기<img src="Title/T-7.png" alt="Image description" class="resizable-image7"></p>
+            </div>
+        </div>
+        <div class="right"></div>
+    </section>
+    <section id="tag2" class="S3">
+        <div class="left">
+            <div class="top">이걸<br>종량제봉투에 <br class="break-text">버려야 한다고?</div>
+            <div class="bottom">
+                <p onclick="openPopup(2, 0)">과일의<img src="Title/T-8.png" alt="Image description" class="resizable-image">딱딱한 부분<img src="Title/T-8-2.png" alt="Image description" class="resizable-image"></p>
+                <p onclick="openPopup(2, 1)">울퉁불퉁 과일망<img src="Title/T-9.png" alt="Image description" class="resizable-image"></p>
+                <p onclick="openPopup(2, 2)">사용한 노끈<img src="Title/T-10.png" alt="Image description" class="resizable-image">이나<br class="break-text"> 테이프<img src="Title/T-10-2.png" alt="Image description" class="resizable-image"></p>
+                <p onclick="openPopup(2, 3)"><img src="Title/T-11.png" alt="Image description" class="resizable-image">음식물에 오염된 용기</p>
+                <p onclick="openPopup(2, 4)">다른 재질, 어려운 분리<img src="Title/T-12.png" alt="Image description" class="resizable-image"></p>
+                <p onclick="openPopup(2, 5)"><img src="Title/T-13.png" alt="Image description" class="resizable-image">비닐같은 보온 보냉팩</p>
+                <p onclick="openPopup(2, 6)">파<img src="Title/T-14.png" alt="Image description" class="resizable-image">와 양파<img src="Title/T-14-2.png" alt="Image description" class="resizable-image">뿌리</p>
+                <p onclick="openPopup(2, 7)">부피가 작은 침구류<img src="Title/T-15.png" alt="Image description" class="resizable-image"></p>
+                <p onclick="openPopup(2, 8)">작은 종이 조각<img src="Title/T-16.png" alt="Image description" class="resizable-image">과 <br class="break-text">스티커<img src="Title/T-16-2.png" alt="Image description" class="resizable-image"></p>
+            </div>
+        </div>
+        <div class="right"></div>
+    </section>
+
+    <!-- 팝업 닫기 버튼 -->
+    <div id="popup" class="popup">
+        <div class="popup-content" id="popup-content"></div>
+        <span class="close-btn" onclick="closePopup()">X</span>
+    </div>
+
+    <script>
+        // S2 팝업 내용 이미지
+        var popupDataS2 = [
+            {
+                content: '<div class="title"><span class="Green">콘센트</span>는 <span class="Green">드라이버</span>를<br class="break-text"> 이용해 <br class="break-text2"><span class="Green">플라스틱 부분</span>과 <span class="Green">전선</span>을 분리하기</div><div class="small">콘센트는 <span class="Bold">플라스틱, 전선, 금속</span> 부분으로 이루어져 있어요.<br class="break-text2"><span class="Bold"> 드라이버로 간단히 해체</span>가 가능하답니다.<br class="break-text"> 분리된 <span class="Bold">플라스틱은 플라스틱<br class="break-text2">재활용에, 전선은 일반 쓰레기(종량제)에, 금속은 금속</span>에 버려주세요.</div><div class="small">전선 <span class="Bold">양이 많을 때</span>에는 <span class="Bold">가연성 쓰레기봉투</span>에<br class="break-text"> 넣어주세요! <br class="break-text2">전선이 재활용이 되려면 <span class="Bold">폐가전과 <br class="break-text">함께</span> 버리거나, <span class="Bold">전자제품 수거함</span>에<br class="break-text2">버리거나, <span class="Bold"><br class="break-text">고물상</span>에 가져다주어야 해요.</div>',
+                image: 'Pop/Pop-1.jpg'
+            },
+            {
+                content: '<div class="title"><span class="Green">유통기한이 지난<br class="break-text">알약</span>은 <span class="Green">껍데기</span>와<br class="break-text2"> 알약을 구분해서 버리기</div><div class="small">알약은 <span class="Bold">절대 일반 쓰레기(종량제)나 음식물, 변기 하수구 등</span>에 버리면 안 돼요!<br>수질을 오염시키는 원인이 돼요. 알약은 꼭 약국, 보건소에 있는 <span class="Bold">폐의약품 수거함</span>에 넣어주세요.<br class="break-text"><span class="Bold">껍데기</span>는 재활용 마크가 없어요.<br class="break-text"><span class="Bold">일반 쓰레기(종량제)</span>에 버려주세요.</div>',
+                image: 'Pop/Pop-2.jpg'
+            },
+            {
+                content: '<div class="title"><span class="Green">우산</span>을 버릴 때는 크게 <span class="Green"><br class="break-text">3부분</span>으로 <br class="break-text2"><span class="Green">나누어서 </span> <br class="break-text">분리배출 해야해요</div><div class="small"></p>손잡이는 재질에 따라 <span class="Bold">플라스틱이면 플라스틱</span>, <br class="break-text"><span class="Bold">금속이라면 금속</span>에!<br><span class="Bold">우산대와 가림막의 연결부위</span>는 <span class="Bold">캔류</span> 또는 <span class="Bold">철</span>로!<br><span class="Bold">우산 비닐</span>은 <span class="Bold">비닐류</span>로!<br>재활용 분리배출 해야해요.</div>',
+                image: 'Pop/Pop-3.jpg'
+            },
+            {
+                content: '<div class="title"><span class="Green">스프링 노트</span>는 <br class="break-text"><span class="Green">스프링 부분</span>과 <br class="break-text2"><span class="Green">종이<br class="break-text">부분</span>을 분리해서 버리기</div><div class="small"><span class="Bold">스프링 노트의 종이 부분</span>은 <span class="Bold">종이 재활용</span>에<br class="break-text"> 버려주세요.<br class="break-text2"><span class="Bold">스프링 부분</span>은 <span class="Bold">금속 재질</span>이라면 <span class="Bold">금속 재활용, <br class="break-text2">플라스틱 재질</span>이라면<br class="break-text"><span class="Bold">플라스틱 재활용</span>으로 버려주세요.</div><div class="small"><span class="Bold">빙글빙글 돌아가는 스프링:</span> 스프링 방향으로 돌려 종이와 분리<br><span class="Bold">이중으로 되어있는 스프링:</span> 단단한 막대로 스프링을 벌려 벌어진 틈으로 종이와 분리</div>',
+                image: 'Pop/Pop-4.jpg'
+            },
+            {
+                content: '<div class="title"><span class="Green">뽁뽁이 비닐</span>은 <br class="break-text"><span class="Green">가장자리를 <br class="break-text2">잘라내<br class="break-text"></span> 안에 든 뽁뽁이와<br>비닐을 분리하기</div><div class="small"><span class="Bold">뽁뽁이와 비닐이 합쳐진 비닐 봉투</span>는 뽁뽁이와<br class="break-text"> 비닐을 분리해야 해요.<br class="break-text2"><span class="Bold">접착 부분은 잘라내<br class="break-text">종량제</span>에 버리고, 안에 든 뽁뽁이를 빼내기 위해 <br class="break-text"><br class="break-text2">가장자리를 잘라주세요. <span class="Bold">뽁뽁이는 일반 쓰레기<br class="break-text">(종량제)</span>에,<br class="break-text2"><span class="Bold">겉 비닐은 비닐 재활용</span>으로 버려주면 된답니다.',
+                image: 'Pop/Pop-5.jpg'
+            },
+            {
+                content: '<div class="title"><span class="Green">종이 박스</span>에<span class="Green">붙여진</span><br><span class="Green">테이프</span>나 <span class="Green">스티커</span>는 <br>박스와 분리해 종량제<br>봉투에 버리기</div><div class="small">종이 박스에 묻은 테이프는 꼭 깨끗하게 제거 후<br><span class="Bold">박스는 종이류</span>에, <span class="Bold">테이프는 일반 쓰레기(종량제)</span>에 버려주세요.</div><div class="small"><span class="Bold">상자는 잘 접어 버리는 것 잊지 마세요!</span></div>',
+                image: 'Pop/Pop-6.jpg'
+            },
+            {
+                content: '<div class="title"><span class="Green">음식물이 묻은 재활용 <br class="break-text">용기</span>는 <br class="break-text2"><span class="Green">물로 깨끗이 <br class="break-text">세척해 </span>제활용 해요</div><div class="small">우선 용기가 재활용이 가능한지 <span class="Bold">재활용 마크를 확인</span>하고<br class="break-text2">내부에 음식물이 남지 않도록 <span class="Bold">물과 세제로 깨끗이 세척</span>해요.</div><div class="small">세척 후 물기를 <span class="Bold">적당히 말린 뒤</span>에 재질에 맞게 <br class="break-text">재활용 해요.</div>',
+                image: 'Pop/Pop-7.jpg'
+            },
+        ];
+
+        // S3 팝업 내용 이미지
+        var popupDataS3 = [
+            {
+                content: '<div class="title2"><span class="Green">과일의 딱딱한 부분</span>은<br> 종량제봉투에 버리기</div><div class="small2">음식 쓰레기 중 일부는 <span class="Bold">동물용 사료가 됩니다.</span><br>그렇기 때문에 우리나라 환경부는 <span class="Bold">"동물이 먹을 수 있는가"</span>를 <br class="break-text2">기준으로 음식 쓰레기 배출 가이드라인을 마련해 두고 있어요.</div><div class="small2"><span class="Bold">파인애플과 같은 딱딱한 껍질, 바나나의 꼭지부분, 포도의<br class="break-text2">가지부분, 복숭아 씨</span>는 종량제 봉투에 버려야 해요.<br class="break-text2">다만 <span class="Bold">말랑한 과일 껍질은 음식물 쓰레기</span>로 취급된답니다.</div>',
+                image: 'Pop/Pop-11.jpg'
+            },
+            {
+                content: '<div class="title3"><span class="Green">과일망 재질의 완충제</span>는<br>종량제 봉투에 버리기</div><div class="small2">완충제 역할을 해주는 과일망과 포장지,<br>비닐인가? 스티로폼인가? 고민하셨나요?</div><div class="small3"><span class="Bold">이런 종류의 완충제는 PE폼 재질로 재활용이 되지 않아요. <br class="break-text2">일반 쓰레기(종량제)에 버려주세요!</span>',
+                image: 'Pop/Pop-12.jpg'
+            },
+            {
+                content: '<div class="title4"><span class="Green">사용한 테이프, 리본, <br class="break-text">노끈, <br class="break-text2">종이끈 </span>등은 종량제 봉투에 버리기</div><div class="small4">끈적끈적한 스티커 재질은 모두 일반<br class="break-text2">노끈과 같이 얇은 비닐끈은 재활용이 되지 않지만 <span class="Bold">노랗고 두꺼운 <br class="break-text2">밴딩끈(바인딩끈)은 플라스틱으로 재활용이 가능해요!</span></div><div class="small7"최근 많이 사용되는 종이 테이프더라도 <span class="Bold">종이 테이프 제품 25개 중 22개가 재활용이 되지 않아요.<br class="break-text2">꼭 일반 쓰레기(종량제)로 버려주세요.</span></div>',
+                image: 'Pop/Pop-13.jpg'
+            },
+            {
+                content: '<div class="title5"><span class="Green">기름, 음식물</span>이 묻은 <br class="break-text"> <span class="Green">일회용품</span>은 <br class="break-text2">깨끗이 씻어 종량제 봉투에 버리기</div><div class="small4"><span class="Bold">기름이 스며든 종이 일회용품</span>은 <span class="Bold">깨끗이 씻어도 재활용이 되지 않아요. </span><br class="break-text2">깨끗이 씻어 말린 후 일반 쓰레기(종량제)로 버려주세요.</div><div class="small2"플라스틱 일회용품은 <span class="Bold">깨끗이 물과 세제로 씻으면 재활용이 가능</span>해요.<br>다만 미끌거리거나 음식물이 다 씻기지 않을 때에는 <br class="break-text2">일반 쓰레기(종량제)로 버려주세요.</div>',
+                image: 'Pop/Pop-14.jpg'
+            },
+            {
+                content: '<div class="title4"><span class="Green">재질이 다른데 분리가<br class="break-text">어려운 것, <br class="break-text2"><span class="Green">볼펜은</span> 종량제 봉투에 버리기</span></div><div class="small4"가위와 같이 <span class="Bold">재질이 다른데 분리가 어려운 쓰레기</span>는 <br>일반 쓰레기(종량제)로 버려야 해요. 다만 가위처럼 <span class="Bold">날카로운 쓰레기</span>는 <br class="break-text2"><span class="Bold">신문지와 테이프로 잘 감싸서 신문지에 ‘가위’, ‘칼’이라고 적어줘요.</span></div><div class="small4"볼펜과 같은 <span class="Bold">작은 필기구</span>는 종량제 봉투에 버려줘요.<br><span class="Bold">너무 작고, 합성물질이 많아<br class="break-text"> 굳이 분리할 필요 없어요.</span></div>',
+                image: 'Pop/Pop-15.jpg'
+            },
+            {
+                content: '<div class="title"><span class="Green">보온 보냉팩</span>은 <span class="Green">내부 에어캡</span><br>확인 후 종량제 봉투에 버리기</div><div class="small"<span class="Bold">은박 보온 보냉팩은 재활용 할 수가 없어요.</span> 종량제 봉투에 버려야 해요. <br>다만 <span class="Bold">내부 에어캡은 재활용이 가능해요.</span> <br>내부를 확인한 후 에어캡이 있다면 에어캡은 비닐 재활용에 버리고 <br>외부 은박팩은 종량제 봉투에 버려주세요.</div>',
+                image: 'Pop/Pop-16.jpg'
+            },
+            {
+                content: '<div class="title5"><span class="Green">파뿌리</span>와 <span class="Green">양파 뿌리</span>는<br>종량제 봉투에 버리기</div><div class="small6"음식 쓰레기 중 일부는 <span class="Bold">동물용 사료가 됩니다.</span><br>그렇기 때문에 우리나라 환경부는 <span class="Bold">"동물이 먹을 수 있는가"</span>를 <br class="break-text2">기준으로 음식 쓰레기 배출 가이드라인을 마련해 두고 있어요.</div>',
+                image: 'Pop/Pop-17.jpg'
+            },
+            {
+                content: '<div class="title6"><span class="Green">베개와 같은 적은 양의 침구류는</span><br class="break-text2">종량제 봉투에 버리기</div><div class="small6"<span class="Bold">베개나 쿠션은 재활용이 어려워요.</span> <br>종량제 봉투에 들어가는 양이라면 일반 쓰레기(종량제)로 버려주세요. <br><span class="Bold">이불과 인형도 마찬가지</span>에요. 부피가 큰 이불이라면 <span class="Bold">잘라서 <br class="break-text2">일반 쓰레기(종량제)</span>로, 부피가 <span class="Bold">너무 크거나 양이 너무 많으면 <br class="break-text2">생활 폐기물</span>로 버려야 해요.</div>',
+                image: 'Pop/Pop-18.jpg'
+            },
+            {
+                content: '<div class="title6"><span class="Green">작게 잘린 조각 종이들은</span><br>종량제 봉투에 버리기</div><div class="small6"<span class="Bold">색종이보다 작게 잘린 조각 종이들</span>은 <span class="Bold">너무 작아 재활용이 어려워요.</span><br>종이가 붙은 스티커도 <span class="Bold">재활용이 어려워요.<br>모두 모아 <span class="Bold">일반 쓰레기(종량제)에 버려주세요.</span></div>',
+                image: 'Pop/Pop-19.jpg'
+            },
+            // 추가 데이터 필요시 여기에 추가
+        ];
+
+        function closePopup() {
+            var popup = document.getElementById('popup');
+            popup.style.display = 'none';
+        }
+
+        function openPopup(sectionIndex, popupIndex) {
+            var popup = document.getElementById('popup');
+            var popupContent = document.getElementById('popup-content');
+
+            var popupData = sectionIndex === 1 ? popupDataS2 : popupDataS3;
+
+            var data = popupData[popupIndex];
+
+            popupContent.innerHTML = data.content;
+            popup.style.backgroundImage = 'url(' + data.image + ')';
+            popup.style.display = 'block';
+        }
+    </script>
+    </div>
+    <div class="right"></div>
+</section>
+<section id="tag3" class="S4">
+    <div class="left">
+    	  <div class="top class="line-break-text>이게<br>버리는 곳이 <br class="break-text">따로 있다고?
+    	  </div>
+
+		    <div class="bottom">
+		    	<p><img src="Box/B-1.png" alt="Image description" class="resizable-image-B1"></p>
+		    	<p><img src="Box/B-2.png" alt="Image description" class="resizable-image-B2"></p>
+		    	<p><img src="Box/B-3.png" alt="Image description" class="resizable-image-B3"></p>
+		    	<p><img src="Box/B-4.png" alt="Image description" class="resizable-image-B4"></p>
+		    	<p><img src="Box/B-5.png" alt="Image description" class="resizable-image-B5"></p>
+		    	<p><img src="Box/B-6.png" alt="Image description" class="resizable-image-B6"></p>
+		    </div>
+		  </div>
+		  <div class="right"></div>
+</section>
+<section id="tag4" class="S5">
+    <div class="left">
+    	  <div class="top class="line-break-text>이건<br>대형폐기물로<br>신고해야<br class="break-text"> 한다고?
+    	  </div>
+
+		    <div class="bottom">
+		    	<p><img src="Room/R-1.png" alt="Image description" class="resizable-image-R1"></p>
+		    	<p><img src="Room/R-2.png" alt="Image description" class="resizable-image-R2"></p>
+		    	<p><img src="Room/R-3.png" alt="Image description" class="resizable-image-R3"></p>
+		    	<p><img src="Room/R-4.png" alt="Image description" class="resizable-image-R4"></p>
+		    	<p><img src="Room/R-5.png" alt="Image description" class="resizable-image-R5"></p>
+		    	<p><img src="Room/R-6.png" alt="Image description" class="resizable-image-R6"></p>
+		    	<p><img src="Room/R-7.png" alt="Image description" class="resizable-image-R7"></p>
+		    </div>
+		    <div class="All">
+		  	<div class="copy_P2"><img src="nav.png"></div>
+		  	<p class="copy2">Copyright © 2024 jeonghyeon All rights reserved.</p>
+		  	<p class="go2">분리수거 방법 전체 보러가기→</p>
+		  	</div>
+		  </div>
+		  <div class="right">
+		  	<div class="copy_P"><img src="nav.png"></div>
+		  	<p class="copy">Copyright © 2024 jeonghyeon All rights reserved.</p>
+		  	<p class="go">분리수거 방법 전체 보러가기→</p>
+		  </div>
+
+</section>
+
+
+</body>
+</html>
